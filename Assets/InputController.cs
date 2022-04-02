@@ -7,6 +7,7 @@ public class InputController : MonoBehaviour
 {
     [Tooltip ("0: A, 1: S, 2: D, 3: F")]
     [SerializeField] BeltHandler[] _flaps = null;
+    [SerializeField] PistonHandler _piston = null;
 
     // Update is called once per frame
     void Update()
@@ -15,13 +16,14 @@ public class InputController : MonoBehaviour
         CheckForSKey();
         CheckForDKey();
         CheckForFKey();
+        CheckForSpace();
     }
 
     private void CheckForAKey()
     {
         if (Input.GetKeyDown(KeyCode.A))
         {
-            Debug.Log("heard A");
+            //Debug.Log("heard A");
             _flaps[0].ToggleRaiseCommand();
         }
     }
@@ -47,6 +49,14 @@ public class InputController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F))
         {
             _flaps[3].ToggleRaiseCommand();
+        }
+    }
+
+    private void CheckForSpace()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            _piston.CommandCompress();
         }
     }
 }
