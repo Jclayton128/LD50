@@ -5,11 +5,12 @@ using UnityEngine;
 public class TrashHandler : MonoBehaviour
 {
     SpriteRenderer _sr;
-    public enum TColor { Blue, Green, Yellow, Red, Brown};
+    public enum TColor { Blue, Cyan, Green, Yellow, Red, Purple};
     public enum TShape { X, Star, Hex, Circle, Square, Clover};
 
     //settings
     Color blue = Color.blue;
+    Color cyan = Color.cyan;
     Color green = Color.green;
     Color yellow = Color.yellow;
     Color red = Color.red;
@@ -31,19 +32,22 @@ public class TrashHandler : MonoBehaviour
         {
             case TColor.Blue:
                 _sr.color = blue;
-                return;
-            case TColor.Brown:
+                break;
+            case TColor.Purple:
                 _sr.color = brown;
-                return;
+                break;
             case TColor.Green:
                 _sr.color = green;
-                return;
+                break;
             case TColor.Red:
                 _sr.color = red;
-                return;
+                break;
             case TColor.Yellow:
                 _sr.color = yellow;
-                return;
+                break;
+            case TColor.Cyan:
+                _sr.color = cyan;
+                break;
 
         }
     }
@@ -51,5 +55,10 @@ public class TrashHandler : MonoBehaviour
     public TColor GetTColor()
     {
         return tColor;
+    }
+
+    public TShape GetTShape()
+    {
+        return tShape;
     }
 }

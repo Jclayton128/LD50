@@ -39,7 +39,6 @@ public class TrashController : MonoBehaviour
 
     private void SpawnTrash()
     {
-        Debug.Log("Spawning trash");
         int randShape = UnityEngine.Random.Range(0, _trashPrefabs.Length);
         GameObject newTrash = Instantiate(_trashPrefabs[randShape], _trashSpout.position, Quaternion.identity);
         TrashHandler th = newTrash.GetComponent<TrashHandler>();

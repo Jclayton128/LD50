@@ -60,13 +60,13 @@ public class BeltHandler : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        collision.gameObject.GetComponent<Rigidbody2D>().AddForce(_moveForce);
+        collision.gameObject.GetComponent<Rigidbody2D>().AddForce(_moveForce, ForceMode2D.Force);
     }
 
     public void ToggleRaiseCommand()
     {
         _shouldBeRaised = !_shouldBeRaised;
         _isStopped = false;
-        Debug.Log($"belt should now be raised {_shouldBeRaised} ");
+        //Debug.Log($"belt should now be raised {_shouldBeRaised} ");
     }
 }

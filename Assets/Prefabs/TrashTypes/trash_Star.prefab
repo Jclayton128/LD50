@@ -195,5 +195,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: trash_Star
       objectReference: {fileID: 0}
+    - target: {fileID: 6355731922284942733, guid: 4f0a0d5c036765b45baaf415fcc823a5, type: 3}
+      propertyPath: tShape
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f0a0d5c036765b45baaf415fcc823a5, type: 3}
