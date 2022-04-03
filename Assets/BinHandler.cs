@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class BinHandler : MonoBehaviour
 {
+    SoundController _sc;
+
     [Tooltip("0: 0%, 1: 20%, 2: 40%, 3: 60%, 4: 80%, 5: 100%")]
     [SerializeField] Sprite[] _shapeSprites = null;
     [SerializeField] SpriteRenderer _shapeSR = null;
@@ -34,12 +36,19 @@ public class BinHandler : MonoBehaviour
     float _currentBurnMax;
 
 
-    void Start()
+    void Awake()
     {
+        _sc = FindObjectOfType<SoundController>();
+
         _particle = GetComponentInChildren<ParticleSystem>();
         _psem = _particle.emission;
         _psem.rateOverTime = 0;
         //_door.SetActive(false);
+    }
+
+    private void Start()
+    {
+        _sc.PlaySound(0);
     }
 
     public void Reset()

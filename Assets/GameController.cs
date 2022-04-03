@@ -12,8 +12,11 @@ public class GameController : MonoBehaviour
     [SerializeField] TextMeshPro _blurbTMP = null;
     [SerializeField] Sprite[] _SFXbuttons = null;
     [SerializeField] Image _SFXSR = null;
+    [SerializeField] GameObject[] _hideawayObjects = null;
 
     //state
+    float _timeInCurrentGame = 0;
+    bool _isTutorialMode = false;
     public bool IsInCoreGame { get; private set; } = true;
     public bool IsPaused { get; private set; } = false;
 
@@ -50,6 +53,7 @@ public class GameController : MonoBehaviour
 
     public void HandleResetGame()
     {
+        _timeInCurrentGame = 0;
         _blurbTMP.text = "Trash Processed: ";
         foreach (var bh in _bhs)
         {
@@ -59,6 +63,7 @@ public class GameController : MonoBehaviour
         _oh.Reset();
         UnpauseGame();
     }
+
 
     private void PauseGame()
     {
@@ -70,6 +75,15 @@ public class GameController : MonoBehaviour
     {
         IsPaused = false;
         Time.timeScale = 1;
+    }
+
+    public void ShowHideTutorial()
+    {
+        _isTutorialMode = !_isTutorialMode;
+        foreach (var obj in _hideawayObjects)
+        {
+            obj.SetActive(_isTutorialMode);
+        }
     }
 
 }
