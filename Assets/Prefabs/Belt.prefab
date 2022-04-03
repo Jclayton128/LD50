@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1057982186043085983}
   - component: {fileID: -3318472485410856154}
   - component: {fileID: 7136483456598555679}
+  - component: {fileID: -3429054332301838562}
   m_Layer: 7
   m_Name: Belt
   m_TagString: Untagged
@@ -121,7 +122,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _conveyorArea: {fileID: 0}
   _moveForce: {x: 1, y: 0}
-  _raisedOffset: {x: 0, y: 1, z: 0}
+  _raisedOffset: {x: 0, y: 1.25, z: 0}
   _raiseSpeed: 5
 --- !u!95 &-3318472485410856154
 Animator:
@@ -149,7 +150,7 @@ PolygonCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1057982186043085972}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -158,7 +159,7 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.0622363, y: 0.34787056}
     oldSize: {x: 2.21875, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
@@ -171,3 +172,29 @@ PolygonCollider2D:
       - {x: -1.0387466, y: -0.23885241}
       - {x: 0.83817434, y: -0.22777385}
       - {x: 1.0749974, y: 0.120821476}
+--- !u!61 &-3429054332301838562
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1057982186043085972}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.84560615, y: 0.12780386}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.0622363, y: 0.34787056}
+    oldSize: {x: 2.21875, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.9673859, y: 0.50538003}
+  m_EdgeRadius: 0

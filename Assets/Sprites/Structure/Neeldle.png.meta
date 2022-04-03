@@ -1,16 +1,31 @@
 fileFormatVersion: 2
-guid: 26da454a2fc543540a6024f3adfa5be0
+guid: ba662df78ca1972458cf126b92bf30d7
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6803873404882588446
-    second: Conveyor_0
+      213: -101364055940334269
+    second: Neeldle_0
   - first:
-      213: 6027523223127536178
-    second: Conveyor_1
+      213: -2162850446832348771
+    second: Neeldle_1
   - first:
-      213: -1732287868377070896
-    second: Conveyor_2
+      213: -7724243353767029463
+    second: Neeldle_2
+  - first:
+      213: 3482912653499673497
+    second: Neeldle_3
+  - first:
+      213: -1171429885192322584
+    second: Neeldle_4
+  - first:
+      213: 2462869279306794431
+    second: Neeldle_5
+  - first:
+      213: 6089794990675802808
+    second: Neeldle_6
+  - first:
+      213: 7778919688109711097
+    second: Neeldle_7
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -124,64 +139,169 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Conveyor_0
+      name: Neeldle_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 71
-        height: 32
-      alignment: 9
-      pivot: {x: 0.0622363, y: 0.34787056}
+        width: 320
+        height: 320
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e1311c230d63c6e50800000000000000
-      internalID: 6803873404882588446
+      spriteID: 34dfeac9de1e79ef0800000000000000
+      internalID: -101364055940334269
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Conveyor_1
+      name: Neeldle_1
       rect:
         serializedVersion: 2
-        x: 71
+        x: 320
         y: 0
-        width: 71
-        height: 32
-      alignment: 9
-      pivot: {x: 0.06751047, y: 0.35372168}
+        width: 320
+        height: 320
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2323fedaf6016a350800000000000000
-      internalID: 6027523223127536178
+      spriteID: d9153465af20cf1e0800000000000000
+      internalID: -2162850446832348771
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Conveyor_2
+      name: Neeldle_2
       rect:
         serializedVersion: 2
-        x: 142
+        x: 640
         y: 0
-        width: 71
-        height: 32
-      alignment: 9
-      pivot: {x: 0.05959911, y: 0.34787056}
+        width: 320
+        height: 320
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0d28aac9c5da5f7e0800000000000000
-      internalID: -1732287868377070896
+      spriteID: 9255b043899fdc490800000000000000
+      internalID: -7724243353767029463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Neeldle_3
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 0
+        width: 320
+        height: 320
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99baf87ea9ac55030800000000000000
+      internalID: 3482912653499673497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Neeldle_4
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 0
+        width: 320
+        height: 320
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e1c5d5d9be3ebfe0800000000000000
+      internalID: -1171429885192322584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Neeldle_5
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 0
+        width: 320
+        height: 320
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb5cd498f8edd2220800000000000000
+      internalID: 2462869279306794431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Neeldle_6
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 0
+        width: 320
+        height: 320
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ba3f26674c438450800000000000000
+      internalID: 6089794990675802808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Neeldle_7
+      rect:
+        serializedVersion: 2
+        x: 2240
+        y: 0
+        width: 320
+        height: 320
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fe521aed3644fb60800000000000000
+      internalID: 7778919688109711097
       vertices: []
       indices: 
       edges: []
