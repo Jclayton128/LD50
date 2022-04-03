@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class PistonHandler : MonoBehaviour
 {
+
     //settings
     [SerializeField] Vector3 _horizOffset = new Vector2(4, 0);
     [SerializeField] float _compressSpeed = 2f;
+    float _slowingPerTrash = 0.025f;
+    [SerializeField] BoxCollider2D _pressCheck = null;
 
     //state
+    float _currentSpeed;
     Vector3 _compressingPosition;
     Vector3 _retractedPosition;
-    bool _isCompressing = false;
-    bool _isRetracting = false;
+    public bool _isCompressing = false;
+    public bool _isRetracting = false;
+    ContactFilter2D cf2d;
+    Collider2D[] thing = new Collider2D[0];
+
+    public int _load;
 
 
     private void Awake()
@@ -26,8 +34,12 @@ public class PistonHandler : MonoBehaviour
     {
         if (_isCompressing)
         {
-            transform.position = Vector3.MoveTowards(transform.position, _compressingPosition, _compressSpeed * Time.deltaTime);
-            if ((transform.position - _compressingPosition).magnitude < Mathf.Epsilon)
+           
+            _currentSpeed = _compressSpeed - (_slowingPerTrash * _load);
+            _currentSpeed = Mathf.Clamp(_currentSpeed, _currentSpeed / 10f, _currentSpeed);
+            transform.position = Vector3.MoveTowards(transform.position, _compressingPosition, _currentSpeed * Time.deltaTime);
+            
+            if ((transform.position - _compressingPosition).magnitude < 1)
             {
                 _isCompressing = false;
                 _isRetracting = true;
@@ -49,5 +61,17 @@ public class PistonHandler : MonoBehaviour
         {
             _isCompressing = true;
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        _load++;
+        _load = Mathf.Clamp(_load,0, 10);
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        _load--;
+        _load = Mathf.Clamp(_load, 0, 10);
     }
 }
