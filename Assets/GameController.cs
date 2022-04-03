@@ -8,4 +8,13 @@ public class GameController : MonoBehaviour
     public bool IsInCoreGame { get; private set; } = true;
     public bool IsPaused { get; private set; } = false;
 
+    public bool IsMuted { get; private set; } = false;
+
+    public void ToggleSFX()
+    {
+        Debug.Log("click");
+        IsMuted = !IsMuted;
+        //return IsMuted;
+    }
+
 }

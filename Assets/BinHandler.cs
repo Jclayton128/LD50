@@ -16,9 +16,11 @@ public class BinHandler : MonoBehaviour
 
     [SerializeField] GameObject _burnProductPrefab = null;
     [SerializeField] Transform _burnProductOutput = null;
+    ParticleSystem _particle;
+    ParticleSystem.EmissionModule _psem;
 
     //settings
-
+    public bool _burnsTrash = false;
 
     //state
     [SerializeField] List<TrashHandler> _trashInBin = new List<TrashHandler>();
@@ -27,14 +29,18 @@ public class BinHandler : MonoBehaviour
     Vector2 _colorPurityVector = Vector2.zero;
     float _currentShapePurity = 1;
     float _currentColorPurity = 1;
-    BeltHandler _beltHandler;
+    [SerializeField] BeltHandler _beltHandler  = null;
     float _burnTimeRemaining = 0;
+    float _currentBurnMax;
 
 
     void Start()
     {
+        _particle = GetComponentInChildren<ParticleSystem>();
+        _psem = _particle.emission;
+        _psem.rateOverTime = 0;
         UpdatePanel();
-        _door.SetActive(false);
+        //_door.SetActive(false);
     }
 
     private void Update()
@@ -53,9 +59,14 @@ public class BinHandler : MonoBehaviour
 
     private void EndBurn()
     {
-        _door.SetActive(false);
+        //_door.SetActive(false);
         _beltHandler.StopBurn();
-        Instantiate(_burnProductPrefab, _burnProductOutput.position, Quaternion.identity);
+        _psem.rateOverTime = 0;
+        if (!_burnsTrash)
+        {
+            Instantiate(_burnProductPrefab, _burnProductOutput.position, Quaternion.identity);
+        }
+
         _trashCount = 0;
         _colorPurityVector = Vector2.zero;
         _currentColorPurity = 1;
@@ -73,7 +84,14 @@ public class BinHandler : MonoBehaviour
         if (collision.TryGetComponent<TrashHandler>(out newTrash))
         {
             AddTrash(newTrash);
-
+            if (_burnsTrash && _trashCount >= 5)
+            {
+                CommandBurn();
+            }
+            if (!_burnsTrash && _trashCount >= 10)
+            {
+                CommandBurn();
+            }
         }
     }
 
@@ -89,70 +107,116 @@ public class BinHandler : MonoBehaviour
         UpdatePanel();
     }
 
-    public void CommandBurn(BeltHandler bh)
+    private void CommandBurn()
     {
-        _beltHandler = bh;
-        _door.SetActive(true);
-        _burnTimeRemaining = 2+ _trashCount / _currentColorPurity;
+        _beltHandler.ForceDown();
+        _beltHandler.StartBurn();
+        //_door.SetActive(true);
+        _psem.rateOverTime = 100;
+        if (_burnsTrash)
+        {
+            _currentBurnMax = Mathf.Clamp((2 * _trashCount) / _currentColorPurity, 1, 10f);
+            _burnTimeRemaining = _currentBurnMax;
+        }
+        else
+        {
+            _currentBurnMax = Mathf.Clamp(2 + _trashCount / _currentColorPurity, 1, 10f);
+            _burnTimeRemaining = _currentBurnMax;
+        }
+
     }
 
 
     private void UpdatePanel()
-    {
-        if (_burnTimeRemaining > 0)
-        {
-            if (_burnTimeRemaining > 10)
+    {       
+            if (_burnTimeRemaining > 0)
             {
-                _shapeSR.sprite = _shapeSprites[0];
+                if (_burnTimeRemaining/_currentBurnMax > 0.8f)
+                {
+                    _shapeSR.sprite = _shapeSprites[0];
+                }
+                else if (_burnTimeRemaining / _currentBurnMax > 0.6f)
+                {
+                    _shapeSR.sprite = _shapeSprites[1];
+                }
+                else if (_burnTimeRemaining / _currentBurnMax > 0.4f)
+                {
+                    _shapeSR.sprite = _shapeSprites[2];
+                }
+                else if (_burnTimeRemaining / _currentBurnMax > 0.28f)
+                {
+                    _shapeSR.sprite = _shapeSprites[3];
+                }
+                else if (_burnTimeRemaining > 0.15f)
+                {
+                    _shapeSR.sprite = _shapeSprites[4];
+                }
+                else
+                {
+                    _shapeSR.sprite = _shapeSprites[5];
+                }
             }
-            else if (_burnTimeRemaining > 8)
-            {
-                _shapeSR.sprite = _shapeSprites[1];
-            }
-            else if (_burnTimeRemaining > 6)
-            {
-                _shapeSR.sprite = _shapeSprites[2];
-            }
-            else if (_burnTimeRemaining > 4)
-            {
-                _shapeSR.sprite = _shapeSprites[3];
-            }
-            else if (_burnTimeRemaining > 2)
-            {
-                _shapeSR.sprite = _shapeSprites[4];
-            }
+
             else
             {
-                _shapeSR.sprite = _shapeSprites[5];
-            }
-        }
-        else
-        {
-            if (_trashCount > 10)
+                if (_burnsTrash)
+                {
+                    if (_trashCount >= 5)
+                    {
+                        _shapeSR.sprite = _shapeSprites[0];
+                    }
+                    else if (_trashCount >= 4)
+                    {
+                        _shapeSR.sprite = _shapeSprites[1];
+                    }
+                    else if (_trashCount >= 3)
+                    {
+                        _shapeSR.sprite = _shapeSprites[2];
+                    }
+                    else if (_trashCount >= 2)
+                    {
+                        _shapeSR.sprite = _shapeSprites[3];
+                    }
+                    else if (_trashCount >= 1)
+                    {
+                        _shapeSR.sprite = _shapeSprites[4];
+                    }
+                    else
+                    {
+                        _shapeSR.sprite = _shapeSprites[5];
+                    }
+                }
+                else
             {
-                _shapeSR.sprite = _shapeSprites[0];
+                if (_trashCount >= 10)
+                {
+                    _shapeSR.sprite = _shapeSprites[0];
+                }
+                else if (_trashCount >= 8)
+                {
+                    _shapeSR.sprite = _shapeSprites[1];
+                }
+                else if (_trashCount >= 6)
+                {
+                    _shapeSR.sprite = _shapeSprites[2];
+                }
+                else if (_trashCount >= 4)
+                {
+                    _shapeSR.sprite = _shapeSprites[3];
+                }
+                else if (_trashCount >= 2)
+                {
+                    _shapeSR.sprite = _shapeSprites[4];
+                }
+                else
+                {
+                    _shapeSR.sprite = _shapeSprites[5];
+                }
             }
-            else if (_trashCount > 8)
-            {
-                _shapeSR.sprite = _shapeSprites[1];
             }
-            else if (_trashCount > 6)
-            {
-                _shapeSR.sprite = _shapeSprites[2];
-            }
-            else if (_trashCount > 4)
-            {
-                _shapeSR.sprite = _shapeSprites[3];
-            }
-            else if (_trashCount > 2)
-            {
-                _shapeSR.sprite = _shapeSprites[4];
-            }
-            else
-            {
-                _shapeSR.sprite = _shapeSprites[5];
-            }
-        }
+        
+
+        
 
 
         if (_currentColorPurity < 0.15f)

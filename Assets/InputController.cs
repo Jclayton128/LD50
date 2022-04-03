@@ -24,15 +24,15 @@ public class InputController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.A))
         {
-            if (Input.GetKey(KeyCode.LeftShift))
-            {
-                _flaps[0].StartBurn();
-                _bins[0].CommandBurn(_flaps[0]);
-            }
-            else
-            {
+            //if (Input.GetKey(KeyCode.LeftShift))
+            //{
+            //    _flaps[0].StartBurn();
+            //    _bins[0].CommandBurn(_flaps[0]);
+            //}
+            //else
+            //{
                 _flaps[0].ToggleRaiseCommand();
-            }
+            //}
 
         }
     }
@@ -41,15 +41,15 @@ public class InputController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.S))
         {
-            if (Input.GetKey(KeyCode.LeftShift))
-            {
-                _flaps[1].StartBurn();
-                _bins[1].CommandBurn(_flaps[1]);
-            }
-            else
-            {
+            //if (Input.GetKey(KeyCode.LeftShift))
+            //{
+            //    _flaps[1].StartBurn();
+            //    _bins[1].CommandBurn(_flaps[1]);
+            //}
+            //else
+            //{
                 _flaps[1].ToggleRaiseCommand();
-            }
+            //}
 
         }
     }
@@ -58,15 +58,15 @@ public class InputController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.D))
         {
-            if (Input.GetKey(KeyCode.LeftShift))
-            {
-                _flaps[2].StartBurn();
-                _bins[2].CommandBurn(_flaps[2]);
-            }
-            else
-            {
+            //if (Input.GetKey(KeyCode.LeftShift))
+            //{
+            //    _flaps[2].StartBurn();
+            //    _bins[2].CommandBurn(_flaps[2]);
+            //}
+            //else
+            //{
                 _flaps[2].ToggleRaiseCommand();
-            }
+            //}
 
         }
     }
@@ -75,15 +75,15 @@ public class InputController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F))
         {
-            if (Input.GetKey(KeyCode.LeftShift))
-            {
-                _flaps[3].StartBurn();
-                _bins[3].CommandBurn(_flaps[3]);
-            }
-            else
-            {
+            //if (Input.GetKey(KeyCode.LeftShift))
+            //{
+            //    _flaps[3].StartBurn();
+            //    _bins[3].CommandBurn(_flaps[3]);
+            //}
+            //else
+            //{
                 _flaps[3].ToggleRaiseCommand();
-            }
+            //}
 
         }
     }

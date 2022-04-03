@@ -42,31 +42,31 @@ public class BeltHandler : MonoBehaviour
         {
             if (_shouldBeRaised)
             {
-                _zRot = Mathf.Lerp(transform.rotation.eulerAngles.z, _angleRaised, Time.deltaTime * _raiseSpeed);
-                transform.rotation = Quaternion.Euler(0, 0, _zRot);
-                if (Mathf.Abs(transform.rotation.eulerAngles.z - _angleRaised) < Mathf.Epsilon)
-                {
-                    _isStopped = true;
-                }
-                //transform.position = Vector3.MoveTowards(transform.position, _raisedPosition, _raiseSpeed * Time.deltaTime);
-                //if ((transform.position - _raisedPosition).magnitude < Mathf.Epsilon)
+                //_zRot = Mathf.Lerp(transform.rotation.eulerAngles.z, _angleRaised, Time.deltaTime * _raiseSpeed);
+                //transform.rotation = Quaternion.Euler(0, 0, _zRot);
+                //if (Mathf.Abs(transform.rotation.eulerAngles.z - _angleRaised) < Mathf.Epsilon)
                 //{
                 //    _isStopped = true;
                 //}
+                transform.position = Vector3.MoveTowards(transform.position, _raisedPosition, _raiseSpeed * Time.deltaTime);
+                if ((transform.position - _raisedPosition).magnitude < Mathf.Epsilon)
+                {
+                    _isStopped = true;
+                }
             }
             else
             {
-                _zRot = Mathf.Lerp(transform.rotation.eulerAngles.z, 0f, Time.deltaTime * _raiseSpeed);
-                transform.rotation = Quaternion.Euler(0, 0, _zRot);
-                if (Mathf.Abs(transform.rotation.eulerAngles.z - 0) < Mathf.Epsilon)
-                {
-                    _isStopped = true;
-                }
-                //transform.position = Vector3.MoveTowards(transform.position, _loweredPosition, _raiseSpeed * Time.deltaTime);
-                //if ((transform.position - _loweredPosition).magnitude < Mathf.Epsilon)
+                //_zRot = Mathf.Lerp(transform.rotation.eulerAngles.z, 0f, Time.deltaTime * _raiseSpeed);
+                //transform.rotation = Quaternion.Euler(0, 0, _zRot);
+                //if (Mathf.Abs(transform.rotation.eulerAngles.z - 0) < Mathf.Epsilon)
                 //{
                 //    _isStopped = true;
                 //}
+                transform.position = Vector3.MoveTowards(transform.position, _loweredPosition, _raiseSpeed * Time.deltaTime);
+                if ((transform.position - _loweredPosition).magnitude < Mathf.Epsilon)
+                {
+                    _isStopped = true;
+                }
             }
 
 
@@ -85,6 +85,12 @@ public class BeltHandler : MonoBehaviour
         _shouldBeRaised = !_shouldBeRaised;
         _isStopped = false;
         //Debug.Log($"belt should now be raised {_shouldBeRaised} ");
+    }
+
+    public void ForceDown()
+    {
+        _shouldBeRaised = false;
+        _isStopped = false;
     }
 
     public void StartBurn()
