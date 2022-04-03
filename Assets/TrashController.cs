@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class TrashController : MonoBehaviour
 {
@@ -10,14 +11,16 @@ public class TrashController : MonoBehaviour
 
     [Tooltip ("0: X, 1: Star, 2: Hex, 3: Circle, 4: Square, 5: Clover")]
     [SerializeField] GameObject[] _trashPrefabs = null;
+    [SerializeField] TextMeshPro _scoreTMP;
 
     //settings
-    float _timeBetweenTrash = 2f;
+    [SerializeField] float _timeBetweenTrash = 0.2f;
 
     //state
     [SerializeField] float _timeForNextTrash;
     List<TrashHandler> _activeTrash = new List<TrashHandler>();
     Queue<TrashHandler> _pooledTrash = new Queue<TrashHandler>();
+    int score = 0;
 
     private void Awake()
     {
@@ -27,6 +30,17 @@ public class TrashController : MonoBehaviour
     private void Start()
     {
         _timeForNextTrash = Time.time + _timeBetweenTrash;
+    }
+
+    public void Reset()
+    {
+        for (int i = _activeTrash.Count - 1; i >= 0; i--)
+        {
+            _activeTrash[i].Despawn();
+        }
+        
+        score = 0;
+        _scoreTMP.text = score.ToString();
     }
     // Update is called once per frame
     void Update()
@@ -58,6 +72,8 @@ public class TrashController : MonoBehaviour
         int randColor = UnityEngine.Random.Range(0, 5);
         nth.SetTColor((TrashHandler.TColor)randColor);
         _activeTrash.Add(nth);
+        score++;
+        _scoreTMP.text = score.ToString();
     }
 
     public void ReturnTrash(TrashHandler completedTrash)

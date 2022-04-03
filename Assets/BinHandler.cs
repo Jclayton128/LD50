@@ -39,8 +39,20 @@ public class BinHandler : MonoBehaviour
         _particle = GetComponentInChildren<ParticleSystem>();
         _psem = _particle.emission;
         _psem.rateOverTime = 0;
-        UpdatePanel();
         //_door.SetActive(false);
+    }
+
+    public void Reset()
+    {
+        _trashCount = 0;
+        _trashInBin.Clear();
+        _burnTimeRemaining = 0;
+        _shapePurityVector = Vector2.zero;
+        _colorPurityVector = Vector2.zero;
+        _currentShapePurity = 1;
+        _currentColorPurity = 1;
+        _psem.rateOverTime = 0;
+        UpdatePanel();
     }
 
     private void Update()
