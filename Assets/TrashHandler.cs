@@ -19,10 +19,16 @@ public class TrashHandler : MonoBehaviour
     //state
     [SerializeField] TShape tShape;
     TColor tColor;
+    TrashController _tc;
     
     private void Awake()
     {
         _sr = GetComponent<SpriteRenderer>();   
+    }
+
+    public void Setup(TrashController tcRef)
+    {
+        _tc = tcRef;
     }
 
     public void SetTColor(TColor newTColor)
@@ -60,5 +66,10 @@ public class TrashHandler : MonoBehaviour
     public TShape GetTShape()
     {
         return tShape;
+    }
+
+    public void Despawn()
+    {
+        _tc.ReturnTrash(this);
     }
 }

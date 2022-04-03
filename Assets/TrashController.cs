@@ -12,11 +12,12 @@ public class TrashController : MonoBehaviour
     [SerializeField] GameObject[] _trashPrefabs = null;
 
     //settings
-    float _timeBetweenTrash = 3f;
+    float _timeBetweenTrash = 2f;
 
     //state
     [SerializeField] float _timeForNextTrash;
-    List<GameObject> _allTrash = new List<GameObject>();
+    List<TrashHandler> _activeTrash = new List<TrashHandler>();
+    Queue<TrashHandler> _pooledTrash = new Queue<TrashHandler>();
 
     private void Awake()
     {
@@ -35,14 +36,34 @@ public class TrashController : MonoBehaviour
             SpawnTrash();
             _timeForNextTrash = Time.time + _timeBetweenTrash;
         }
+
+        //_timeBetweenTrash -= (Time.deltaTime * .1f);
     }
 
     private void SpawnTrash()
     {
-        int randShape = UnityEngine.Random.Range(0, _trashPrefabs.Length);
-        GameObject newTrash = Instantiate(_trashPrefabs[randShape], _trashSpout.position, Quaternion.identity);
-        TrashHandler th = newTrash.GetComponent<TrashHandler>();
+        TrashHandler nth;
+        if (_pooledTrash.Count > 0)
+        {
+            nth = _pooledTrash.Dequeue();
+            nth.gameObject.SetActive(true);
+            nth.transform.position = _trashSpout.position;
+        }
+        else
+        {
+            int rand = UnityEngine.Random.Range(0, _trashPrefabs.Length);
+            nth = Instantiate(_trashPrefabs[rand], _trashSpout.position, Quaternion.identity).GetComponent<TrashHandler>();
+            nth.Setup(this);
+        }
         int randColor = UnityEngine.Random.Range(0, 5);
-        th.SetTColor((TrashHandler.TColor)randColor);
+        nth.SetTColor((TrashHandler.TColor)randColor);
+        _activeTrash.Add(nth);
+    }
+
+    public void ReturnTrash(TrashHandler completedTrash)
+    {
+        _pooledTrash.Enqueue(completedTrash);
+        completedTrash.gameObject.SetActive(false);
+        _activeTrash.Remove(completedTrash);
     }
 }

@@ -18,6 +18,7 @@ public class BeltHandler : MonoBehaviour
     bool _shouldBeRaised = false;
     bool _isRaised = false;
     bool _isStopped = true;
+    bool _isBurning = false;
     Vector3 _raisedPosition;
     Vector3 _loweredPosition;
 
@@ -56,6 +57,7 @@ public class BeltHandler : MonoBehaviour
 
 
         }
+
     }
 
     private void OnCollisionStay2D(Collision2D collision)
@@ -65,8 +67,21 @@ public class BeltHandler : MonoBehaviour
 
     public void ToggleRaiseCommand()
     {
+        if (_isBurning) return;
         _shouldBeRaised = !_shouldBeRaised;
         _isStopped = false;
         //Debug.Log($"belt should now be raised {_shouldBeRaised} ");
+    }
+
+    public void StartBurn()
+    {
+        _isBurning = true;
+        _isStopped = false;
+        _shouldBeRaised = false;
+    }
+
+    public void StopBurn()
+    {
+        _isBurning = false;
     }
 }
