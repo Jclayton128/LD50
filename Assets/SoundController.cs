@@ -10,6 +10,8 @@ public class SoundController : MonoBehaviour
     [Tooltip ("0: ")]
     [SerializeField] AudioClip[] _clips;
 
+    [SerializeField] AudioClip[] _landingClips = null;
+
     void Awake()
     {
         _gc = GetComponent<GameController>();
@@ -18,6 +20,17 @@ public class SoundController : MonoBehaviour
     
     public void PlaySound(int index)
     {
-        _auso.PlayOneShot(_clips[0]);
+        if (_gc.IsMuted) return;
+        _auso.PlayOneShot(_clips[index]);
+    }
+
+    public void PlayLandingSound()
+    {
+        if (_gc.IsMuted) return;
+        int odds = UnityEngine.Random.Range(0, 6);
+        if (odds >= 2) { return; }
+
+        int rand = UnityEngine.Random.Range(0,_landingClips.Length);
+        _auso.PlayOneShot(_landingClips[rand]);
     }
 }

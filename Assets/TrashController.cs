@@ -7,6 +7,7 @@ using TMPro;
 public class TrashController : MonoBehaviour
 {
     GameController _gameCon;
+    SoundController _soundCon;
     [SerializeField] Transform _trashSpout = null;
 
     [Tooltip ("0: X, 1: Star, 2: Hex, 3: Circle, 4: Square, 5: Clover")]
@@ -25,6 +26,7 @@ public class TrashController : MonoBehaviour
     private void Awake()
     {
         _gameCon = FindObjectOfType<GameController>();
+        _soundCon = _gameCon.GetComponent<SoundController>();
     }
 
     private void Start()
@@ -67,13 +69,14 @@ public class TrashController : MonoBehaviour
         {
             int rand = UnityEngine.Random.Range(0, _trashPrefabs.Length);
             nth = Instantiate(_trashPrefabs[rand], _trashSpout.position, Quaternion.identity).GetComponent<TrashHandler>();
-            nth.Setup(this);
+            nth.Setup(this, _soundCon);
         }
         int randColor = UnityEngine.Random.Range(0, 5);
         nth.SetTColor((TrashHandler.TColor)randColor);
         _activeTrash.Add(nth);
         score++;
         _scoreTMP.text = score.ToString();
+        //_soundCon.PlaySound(0);
     }
 
     public void ReturnTrash(TrashHandler completedTrash)

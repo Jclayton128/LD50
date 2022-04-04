@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PistonHandler : MonoBehaviour
 {
+    SoundController _soundCon;
 
     //settings
     [SerializeField] Vector3 _horizOffset = new Vector2(4, 0);
@@ -27,6 +28,7 @@ public class PistonHandler : MonoBehaviour
     {
         _retractedPosition = transform.position;
         _compressingPosition = transform.position + _horizOffset;
+        _soundCon = FindObjectOfType<SoundController>();
     }
 
     // Update is called once per frame
@@ -43,6 +45,7 @@ public class PistonHandler : MonoBehaviour
             {
                 _isCompressing = false;
                 _isRetracting = true;
+                _soundCon.PlaySound(4);
             }
         }
         if (_isRetracting)
@@ -60,6 +63,8 @@ public class PistonHandler : MonoBehaviour
         if (!_isRetracting)
         {
             _isCompressing = true;
+            _soundCon.PlaySound(3);
+
         }
     }
 

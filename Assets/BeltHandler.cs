@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class BeltHandler : MonoBehaviour
 {
+    SoundController _sc;
     [SerializeField] BoxCollider2D _conveyorArea = null;
 
     //settings
@@ -23,6 +24,11 @@ public class BeltHandler : MonoBehaviour
     Vector3 _raisedPosition;
     Vector3 _loweredPosition;
     float _zRot = 0;
+
+    private void Awake()
+    {
+        _sc = FindObjectOfType<SoundController>();
+    }
 
     void Start()
     {
@@ -84,13 +90,23 @@ public class BeltHandler : MonoBehaviour
         if (_isBurning) return;
         _shouldBeRaised = !_shouldBeRaised;
         _isStopped = false;
+        if (_shouldBeRaised)
+        {
+            _sc.PlaySound(7);
+        }
+        if (!_shouldBeRaised)
+        {
+            _sc.PlaySound(8);
+        }
         //Debug.Log($"belt should now be raised {_shouldBeRaised} ");
     }
 
     public void ForceDown()
     {
+        _isBurning = true;
         _shouldBeRaised = false;
         _isStopped = false;
+        _sc.PlaySound(8);
     }
 
     public void StartBurn()

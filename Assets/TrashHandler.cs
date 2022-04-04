@@ -5,10 +5,12 @@ using UnityEngine;
 public class TrashHandler : MonoBehaviour
 {
     SpriteRenderer _sr;
+    SoundController _soundCon;
     public enum TColor { Blue, Cyan, Green, Yellow, Red, Purple};
     public enum TShape { X, Star, Hex, Circle, Square, Clover};
 
     //settings
+    float _timeBetweenSounds = 2f;
     Color blue = Color.blue;
     Color cyan = Color.cyan;
     Color green = Color.green;
@@ -20,15 +22,18 @@ public class TrashHandler : MonoBehaviour
     [SerializeField] TShape tShape;
     TColor tColor;
     TrashController _tc;
+    float _timeForNextSound = 0;
     
     private void Awake()
     {
         _sr = GetComponent<SpriteRenderer>();   
     }
 
-    public void Setup(TrashController tcRef)
+    public void Setup(TrashController tcRef, SoundController sc)
     {
         _tc = tcRef;
+        _soundCon = sc;
+
     }
 
     public void SetTColor(TColor newTColor)
@@ -71,5 +76,17 @@ public class TrashHandler : MonoBehaviour
     public void Despawn()
     {
         _tc.ReturnTrash(this);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+     if (collision.gameObject.layer == 7)
+        {
+            if (Time.time >= _timeForNextSound)
+            {
+                _timeForNextSound = Time.time + _timeBetweenSounds;
+                _soundCon.PlayLandingSound();
+            }
+        }   
     }
 }

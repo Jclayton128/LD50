@@ -81,6 +81,7 @@ public class BinHandler : MonoBehaviour
     private void EndBurn()
     {
         //_door.SetActive(false);
+        _sc.PlaySound(2);
         _beltHandler.StopBurn();
         _psem.rateOverTime = 0;
         if (!_burnsTrash)
@@ -132,6 +133,7 @@ public class BinHandler : MonoBehaviour
     {
         _beltHandler.ForceDown();
         _beltHandler.StartBurn();
+        _sc.PlaySound(1);
         //_door.SetActive(true);
         _psem.rateOverTime = 100;
         if (_burnsTrash)

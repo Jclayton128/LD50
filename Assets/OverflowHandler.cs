@@ -10,6 +10,7 @@ public class OverflowHandler : MonoBehaviour
     [SerializeField] Sprite[] _needlePos;
     [SerializeField] TextMeshPro _TMP;
     GameController _gc;
+    SoundController _sc;
 
     //Settings
     float _graceTime = 3f;
@@ -25,6 +26,7 @@ public class OverflowHandler : MonoBehaviour
     private void Start()
     {
         _gc = FindObjectOfType<GameController>();
+        _sc = _gc.GetComponent<SoundController>();
         Reset();
     }
 
@@ -56,10 +58,12 @@ public class OverflowHandler : MonoBehaviour
                 _timeToSwapFlash = Time.time + _timeBetweenFlash;
             }
 
-            if (Time.time >= _timeForFail)
+            if (Time.time >= _timeForFail )
             {
+                _isInJeapordy = false;
                 _gc.HandleGameOver();
-                
+                _sc.PlaySound(6);
+
             }
         }
     }
@@ -71,7 +75,10 @@ public class OverflowHandler : MonoBehaviour
         _dialSR.sprite = _needlePos[count];
         if (count >= _needlePos.Length -1)
         {
-            Debug.Log("in Jeapordry");
+            if (!_isInJeapordy)
+            {
+                _sc.PlaySound(5);
+            }
             _isInJeapordy = true;
             _timeForFail = Time.time + _graceTime;
         }
