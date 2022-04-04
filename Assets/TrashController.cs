@@ -15,7 +15,7 @@ public class TrashController : MonoBehaviour
     [SerializeField] TextMeshPro _scoreTMP;
 
     //settings
-    [SerializeField] float _timeBetweenTrash = 0.2f;
+    float _timeBetweenTrash = 2f;
 
     //state
     [SerializeField] float _timeForNextTrash;
@@ -50,7 +50,7 @@ public class TrashController : MonoBehaviour
         if (_gameCon.IsInCoreGame && !_gameCon.IsPaused && Time.time >= _timeForNextTrash)
         {
             SpawnTrash();
-            _timeForNextTrash = Time.time + _timeBetweenTrash;
+            _timeForNextTrash = Time.time + _timeBetweenTrash - Mathf.Clamp(score/100f, 0, 1.5f);
         }
 
         //_timeBetweenTrash -= (Time.deltaTime * .1f);

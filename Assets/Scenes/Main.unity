@@ -850,7 +850,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1057982186043085983, guid: 5aa4e0c339267894d8f735275d95422d, type: 3}
       propertyPath: _moveForce.x
-      value: 1.05
+      value: 2.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5aa4e0c339267894d8f735275d95422d, type: 3}
@@ -1023,7 +1023,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1.2587813, y: 0.013391376}
+  m_Offset: {x: 1.6193675, y: 0.013391376}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1034,7 +1034,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.7143199, y: 0.59826136}
+  m_Size: {x: 1.4354923, y: 0.59826136}
   m_EdgeRadius: 0
 --- !u!1 &515384353
 GameObject:
@@ -1513,6 +1513,10 @@ PrefabInstance:
       value: LeftBelt_A
       objectReference: {fileID: 0}
     - target: {fileID: 1057982186043085983, guid: 5aa4e0c339267894d8f735275d95422d, type: 3}
+      propertyPath: _raiseSpeed
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1057982186043085983, guid: 5aa4e0c339267894d8f735275d95422d, type: 3}
       propertyPath: _moveForce.x
       value: -1
       objectReference: {fileID: 0}
@@ -1761,6 +1765,10 @@ PrefabInstance:
       propertyPath: _beltHandler
       value: 
       objectReference: {fileID: 1247659475}
+    - target: {fileID: 8095794867935161051, guid: 695de072fa669f54d880d9c5295fb069, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.801
+      objectReference: {fileID: 0}
     - target: {fileID: 8368653166461639762, guid: 695de072fa669f54d880d9c5295fb069, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -0.04
@@ -1880,7 +1888,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1057982186043085983, guid: 5aa4e0c339267894d8f735275d95422d, type: 3}
       propertyPath: _moveForce.x
-      value: 1
+      value: 1.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5aa4e0c339267894d8f735275d95422d, type: 3}
@@ -2133,8 +2141,12 @@ PrefabInstance:
       value: LeftBelt_D
       objectReference: {fileID: 0}
     - target: {fileID: 1057982186043085983, guid: 5aa4e0c339267894d8f735275d95422d, type: 3}
+      propertyPath: _raiseSpeed
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1057982186043085983, guid: 5aa4e0c339267894d8f735275d95422d, type: 3}
       propertyPath: _moveForce.x
-      value: -0.6
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 1057982186043085983, guid: 5aa4e0c339267894d8f735275d95422d, type: 3}
       propertyPath: _raisedOffset.y
@@ -2506,7 +2518,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: A+S burns large loads into small bits
+  m_text: A+S burn large loads into small bits
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: da40f6d90f9aa4c44a091e754c5833f6, type: 2}
   m_sharedMaterial: {fileID: 2385372286010929995, guid: da40f6d90f9aa4c44a091e754c5833f6, type: 2}
@@ -5172,6 +5184,10 @@ PrefabInstance:
       value: LeftBelt_S
       objectReference: {fileID: 0}
     - target: {fileID: 1057982186043085983, guid: 5aa4e0c339267894d8f735275d95422d, type: 3}
+      propertyPath: _raiseSpeed
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1057982186043085983, guid: 5aa4e0c339267894d8f735275d95422d, type: 3}
       propertyPath: _moveForce.x
       value: -1
       objectReference: {fileID: 0}
@@ -5341,7 +5357,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1057982186043085983, guid: 5aa4e0c339267894d8f735275d95422d, type: 3}
       propertyPath: _moveForce.x
-      value: 1
+      value: 1.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5aa4e0c339267894d8f735275d95422d, type: 3}
@@ -5423,11 +5439,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1057982186043085983, guid: 5aa4e0c339267894d8f735275d95422d, type: 3}
       propertyPath: _moveForce.x
-      value: -0.8
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1057982186043085983, guid: 5aa4e0c339267894d8f735275d95422d, type: 3}
+      propertyPath: _raisedOffset.x
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 1057982186043085983, guid: 5aa4e0c339267894d8f735275d95422d, type: 3}
       propertyPath: _raisedOffset.y
-      value: 2.9
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5aa4e0c339267894d8f735275d95422d, type: 3}
@@ -5497,7 +5517,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1057982186043085983, guid: 5aa4e0c339267894d8f735275d95422d, type: 3}
       propertyPath: _moveForce.x
-      value: 1
+      value: 1.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5aa4e0c339267894d8f735275d95422d, type: 3}
@@ -5792,7 +5812,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1057982186043085983, guid: 5aa4e0c339267894d8f735275d95422d, type: 3}
       propertyPath: _moveForce.x
-      value: 1
+      value: 1.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5aa4e0c339267894d8f735275d95422d, type: 3}
@@ -6488,7 +6508,6 @@ MonoBehaviour:
   - {fileID: 5508462264789972074, guid: 3b9939badd2de8849972d5e4db2e87cd, type: 3}
   - {fileID: 5941503327777587565, guid: 3301415b6e74a0447a05b2dc76d9dd76, type: 3}
   _scoreTMP: {fileID: 1996945645}
-  _timeBetweenTrash: 1.5
   _timeForNextTrash: 0
 --- !u!114 &2044951615
 MonoBehaviour:
@@ -6891,6 +6910,22 @@ PrefabInstance:
     - target: {fileID: 5076670829735669688, guid: 695de072fa669f54d880d9c5295fb069, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[7].y
       value: 1.5322185
+      objectReference: {fileID: 0}
+    - target: {fileID: 6515813827172867735, guid: 695de072fa669f54d880d9c5295fb069, type: 3}
+      propertyPath: m_Size.x
+      value: 1.6408162
+      objectReference: {fileID: 0}
+    - target: {fileID: 6515813827172867735, guid: 695de072fa669f54d880d9c5295fb069, type: 3}
+      propertyPath: m_Size.y
+      value: 0.36620033
+      objectReference: {fileID: 0}
+    - target: {fileID: 6515813827172867735, guid: 695de072fa669f54d880d9c5295fb069, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.034389496
+      objectReference: {fileID: 0}
+    - target: {fileID: 6515813827172867735, guid: 695de072fa669f54d880d9c5295fb069, type: 3}
+      propertyPath: m_Offset.y
+      value: 1.2602689
       objectReference: {fileID: 0}
     - target: {fileID: 7868138136339190612, guid: 695de072fa669f54d880d9c5295fb069, type: 3}
       propertyPath: _beltHandler

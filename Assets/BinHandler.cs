@@ -137,14 +137,16 @@ public class BinHandler : MonoBehaviour
         //_door.SetActive(true);
         _psem.rateOverTime = 100;
         if (_burnsTrash)
-        {
-            _currentBurnMax = Mathf.Clamp((2 * _trashCount) / _currentColorPurity, 1, 10f);
+        {            
+            _currentBurnMax = Mathf.Clamp((_trashCount / _currentColorPurity) / _currentColorPurity, 1, 40f);
+            Debug.Log($"{gameObject.name} shortburing {_trashCount} at purity {_currentColorPurity}, takes {_currentBurnMax}");
             _burnTimeRemaining = _currentBurnMax;
         }
         else
         {
-            _currentBurnMax = Mathf.Clamp(2 + _trashCount / _currentColorPurity, 1, 10f);
-            _burnTimeRemaining = _currentBurnMax;
+            _currentBurnMax = Mathf.Clamp((_trashCount / _currentColorPurity), 1, 30f);
+            Debug.Log($"{gameObject.name} longburing {_trashCount} at purity {_currentColorPurity}, takes {_currentBurnMax}");
+           _burnTimeRemaining = _currentBurnMax;
         }
 
     }

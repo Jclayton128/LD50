@@ -38,7 +38,7 @@ public class PistonHandler : MonoBehaviour
         {
            
             _currentSpeed = _compressSpeed - (_slowingPerTrash * _load);
-            _currentSpeed = Mathf.Clamp(_currentSpeed, _currentSpeed / 10f, _currentSpeed);
+            _currentSpeed = Mathf.Clamp(_currentSpeed, _compressSpeed / 30f, _compressSpeed);
             transform.position = Vector3.MoveTowards(transform.position, _compressingPosition, _currentSpeed * Time.deltaTime);
             
             if ((transform.position - _compressingPosition).magnitude < 1)
@@ -71,12 +71,12 @@ public class PistonHandler : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         _load++;
-        _load = Mathf.Clamp(_load,0, 10);
+        _load = Mathf.Clamp(_load,0, 30);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         _load--;
-        _load = Mathf.Clamp(_load, 0, 10);
+        _load = Mathf.Clamp(_load, 0, 30);
     }
 }
