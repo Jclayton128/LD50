@@ -18,7 +18,7 @@ public class OverflowHandler : MonoBehaviour
 
     //state
     public int count = 0;
-    bool _isInJeapordy = false;
+    public bool _isInJeapordy = false;
     float _timeForFail;
     float _timeToSwapFlash;
     bool _flashIsOn = false;
@@ -72,15 +72,15 @@ public class OverflowHandler : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         count++;
-        _dialSR.sprite = _needlePos[count];
+        _dialSR.sprite = _needlePos[Mathf.Clamp(count, 0, _needlePos.Length-1)];
         if (count >= _needlePos.Length -1)
         {
             if (!_isInJeapordy)
             {
                 _sc.PlaySound(5);
+                _timeForFail = Time.time + _graceTime;
             }
             _isInJeapordy = true;
-            _timeForFail = Time.time + _graceTime;
         }
     }
 
